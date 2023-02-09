@@ -1,0 +1,33 @@
+plugins {
+    id 'application'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+description 'This is a test app'
+
+apply plugin: 'java'
+//apply plugin: 'application'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'io.dropwizard:dropwizard-core:0.8.0'
+    implementation 'com.google.inject:guice:4.1.0'
+    implementation 'com.google.inject.extensions:guice-persist:4.1.0'
+    implementation 'org.hibernate:hibernate-entitymanager:5.2.9.Final'
+    implementation 'com.h2database:h2:1.4.194'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+mainClassName = 'org.example.Main'
+run {
+    args = ['server', './src/config.yml']
+}
+
+test {
+    useJUnitPlatform()
+}
